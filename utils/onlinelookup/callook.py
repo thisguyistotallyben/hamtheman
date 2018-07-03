@@ -9,7 +9,7 @@ Uses Callook's API to retreive information on callsigns
 import json
 import os.path
 from urllib import request, error
-from onlinelookup import olerror
+from . import olerror
 
 
 # importorator
@@ -32,7 +32,7 @@ class CallookResult:
         self.state = ''
         self.city = ''
 
-        
+
         # club stuff
         self.club = False
         self.trusteename = ''
@@ -117,5 +117,5 @@ class CallookLookup:
 
         # raw data
         lr.raw = data
-        
+
         return lr

@@ -5,15 +5,15 @@
 import discord
 import asyncio
 import os
-import wget
-from random import randint
-import urllib
-import urllib.request
-import json
-from datetime import datetime
 
-from onlinelookup import htmlookup
-from morse import morse
+from random import randint
+
+import json
+
+from utils.utc import utc
+from utils.cond import cond
+from utils import morse
+from utils.onlinelookup import htmlookup
 
 
 block_list = []
@@ -32,8 +32,6 @@ class MyClient(discord.Client):
 
     async def on_message(self, message):
         # do-not-reply
-        if not message.content.startswith('htm'):
-            return
         if message.author == self.user:
             return
 
@@ -52,7 +50,9 @@ class MyClient(discord.Client):
             # commands that do not need parameters
             if len(msplit) == 2:
                 if command == 'utc':
-                    await message.channel.send(embed=self.utc())
+                    await message.channel.send(embed=utc())
+                elif command == 'cond':
+                    await message.channel.send(file=cond())
 
             # commands that do need parameters
             elif len(msplit) == 3:
@@ -63,21 +63,22 @@ class MyClient(discord.Client):
                     print('here')
                     await message.channel.send(embed=self.ol.lookup(par))
 
-        '''
-            with message.channel.typing():
-                await asyncio.sleep(5.0)
-                await message.channel.send('Done sleeping.')
-        '''
-
-    def utc(self):
-        s = str(datetime.utcnow())
-        ss = s.strip().split()
-        date = ss[0]
-        time = ss[1][0:8]
-
-        etitle = 'Universal Coordinated Time'
-        emess = "**Date:** " + date + "\n**Time:** " + time
-        return discord.Embed(title=etitle, description=emess, colour=0x00c0ff)
+        # non-htm * commands
+        if message.content == 'bonk':
+            await message.channel.send(':regional_indicator_b: '
+                                       ':regional_indicator_o: '
+                                       ':regional_indicator_n: '
+                                       ':regional_indicator_k:')
+        elif message.content.startswith('boonk'):
+            await message.channel.send(':regional_indicator_b: '
+                                       ':regional_indicator_o: '
+                                       ':regional_indicator_o: '
+                                       ':regional_indicator_n: '
+                                       ':regional_indicator_k:     '
+                                       ':regional_indicator_g: '
+                                       ':regional_indicator_a: '
+                                       ':regional_indicator_n: '
+                                       ':regional_indicator_g:')
 
 with open('.discordkey.txt', 'r') as f:
     lines = f.readlines()
