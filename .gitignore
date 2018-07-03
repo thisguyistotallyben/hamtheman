@@ -1,0 +1,5 @@
+__pycache__
+*.swp
+.discordkey.txt
+.onlinelookup-key.txt
+.onlinelookup-login.txt
