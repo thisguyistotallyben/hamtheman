@@ -12,47 +12,12 @@ import json
 from datetime import datetime
 
 from onlinelookup import hamqth, callook, olerror
+from morse import morse
 
 
 # setup
 client = discord.client.Client()
-tomorse = {'a':'.-',
-           'b':'-...',
-           'c':'-.-.',
-           'd':'-..',
-           'e':'.',
-           'f':'..-.',
-           'g':'--.',
-           'h':'....',
-           'i':'..',
-           'j':'.---',
-           'k':'-.-',
-           'l':'.-..',
-           'm':'--',
-           'n':'-.',
-           'o':'---',
-           'p':'.--.',
-           'q':'--.-',
-           'r':'.-.',
-           's':'...',
-           't':'-',
-           'u':'..-',
-           'v':'...-',
-           'w':'.--',
-           'x':'-..-',
-           'y':'--.-',
-           'z':'--..',
-           '1':'.----',
-           '2':'..---',
-           '3':'...--',
-           '4':'....-',
-           '5':'.....',
-           '6':'-....',
-           '7':'--...',
-           '8':'---..',
-           '9':'----.',
-           '0':'-----'
-          }
+
 help_message = ("**morse [message]:** Translates a message into morse code\n"
                 "**cond:** Gives solar conditions\n"
                 "**call [callsign]:** gives information on a call sign\n"
