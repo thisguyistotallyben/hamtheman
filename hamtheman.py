@@ -34,12 +34,14 @@ class MyClient(discord.Client):
         # do-not-reply
         if message.author == self.user:
             return
+        print(message.author, 'in', message.channel)
+        print('  ' + message.content)
+
+        # split the message
+        msplit = message.content.split(' ', 2)
 
         # htm * commands
-        if message.content.startswith('htm'):
-            msplit = message.content.split(' ', 2)
-            print(msplit)
-
+        if msplit[0] == 'htm':
             # no content
             if len(msplit) == 1:
                 return
@@ -64,12 +66,12 @@ class MyClient(discord.Client):
                     await message.channel.send(embed=self.ol.lookup(par))
 
         # non-htm * commands
-        if message.content == 'bonk':
+        if msplit[0] == 'bonk' and len(msplit) == 1:
             await message.channel.send(':regional_indicator_b: '
                                        ':regional_indicator_o: '
                                        ':regional_indicator_n: '
                                        ':regional_indicator_k:')
-        elif message.content.startswith('boonk'):
+        elif msplit[0] == 'boonk':
             await message.channel.send(':regional_indicator_b: '
                                        ':regional_indicator_o: '
                                        ':regional_indicator_o: '
