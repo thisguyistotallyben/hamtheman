@@ -1,5 +1,5 @@
 # Author:  Benjamin Johnson
-# Purpose: It wants to be the very dankest.
+# Purpose: It performs various ham radio-related tasks
 
 
 import discord
@@ -285,60 +285,6 @@ def hqfill(r):
     em = discord.Embed(title=r.callsign, url=f'https://qrz.com/db/{r.callsign}', description=rets, colour=0x00c0ff)
     em = em.set_footer(text='Source: hamqth.com')
     return em
-
-
-'''
-def get_call(message, mode):
-    # setup
-    s = ""
-    ntitle = ""
-    nmessage = ""
-    splitmess = message.split()
-
-    # error checking
-    if len(splitmess) != 3:
-        ntitle = "Syntax Error"
-        nmessage = "Usage: !call callsign"
-
-    else:
-        # isolate call sign from message
-        call = splitmess[2]
-
-        # grab cool text-only website
-        websource = urllib.request.urlopen("https://callook.info/" + call + "/text")
-        for lines in websource.readlines():
-            s += lines.decode("utf-8")
-
-        # formatting
-        ssplit = s.split('\n')
-
-        # if a call sign was found
-        if len(ssplit) > 1:
-            #retrieve call sign
-            tmp = ssplit[1].strip().split(':')
-            ntitle = tmp[1]
-
-            if mode == "simple":
-                # cut out unneccessary crap
-                ssplittmp = ssplit[2:-6]
-                for i in range(0, len(ssplittmp)):
-                    if ssplittmp[i].startswith('Previous Callsign:'):
-                        del ssplittmp[i]
-                        break
-                for i in range(0, len(ssplittmp)):
-                    if ssplittmp[i].startswith('Previous Class:'):
-                        del ssplittmp[i]
-                        break
-                nmessage = '\n'.join(ssplittmp)
-            else: nmessage = s
-
-        # if no call sign was found
-        else:
-            ntitle = "Error"
-            nmessage = "Call sign not found"
-
-    return discord.Embed(title=ntitle, description=nmessage, colour=0x00c0ff)
-'''
 
 
 def morse(message):
