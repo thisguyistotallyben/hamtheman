@@ -38,7 +38,7 @@ class MyClient(discord.Client):
         print('  ' + message.content)
 
         # split the message
-        msplit = message.content.split(' ', 2)
+        msplit = message.content.lower().split(' ', 2)
 
         # htm * commands
         if msplit[0] == 'htm':
