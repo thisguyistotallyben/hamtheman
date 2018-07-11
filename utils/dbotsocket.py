@@ -70,10 +70,9 @@ class DBotSocket:
                                         conn.sendall(ret.encode())
                         elif command == 'dothing':
                             print('doing the thing')
-                            nmess = discord.Message
                             cid = self.stats['servers']['Young Hams']['channels']['general']
                             chan = self.bot.get_channel(cid)
-                            await chan.send('hello')
+                            # await chan.send('hello')
                         else:
                             errmess = 'not a command'
                             conn.sendall(errmess.encode())
