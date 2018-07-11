@@ -27,7 +27,7 @@ class DBotSocket:
             # get channels
             for j in i.channels:
                 cname = j.name
-                self.stats['servers'][sname]['channels'][cname] = j
+                self.stats['servers'][sname]['channels'][cname] = j.id
 
         # set active
 
@@ -71,8 +71,9 @@ class DBotSocket:
                         elif command == 'dothing':
                             print('doing the thing')
                             nmess = discord.Message
-                            channel = self.stats['servers']['Young Hams']['channels']['general']
-                            # await channel.send('hello')
+                            cid = self.stats['servers']['Young Hams']['channels']['general']
+                            chan = self.bot.get_channel(cid)
+                            await chan.send('hello')
                         else:
                             errmess = 'not a command'
                             conn.sendall(errmess.encode())
