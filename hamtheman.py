@@ -5,14 +5,16 @@
 import discord
 import asyncio
 import os
+import socket
 
 from random import randint
 
 import json
 
+from utils import morse
+from utils import dbotsocket
 from utils.utc import utc
 from utils.cond import cond
-from utils import morse
 from utils.onlinelookup import htmlookup
 
 
@@ -23,12 +25,16 @@ class MyClient(discord.Client):
     def __init__(self):
         self.ol = htmlookup.HtmLookup()
         self.morse = morse.Morse()
+        self.dbs = dbotsocket.DBotSocket(self, 50043)
         super().__init__()
 
     async def on_ready(self):
-        # await client.change_presence(game=discord.Game(name="with Baofengs"))
+        await self.change_presence(activity=discord.Game(name="with Baofengs"))
         print('Shaking and also baking')
         print('-------------------------------')
+
+        # fill stats for dbotsocket
+        self.dbs.fill_stats(self)
 
     async def on_message(self, message):
         # do-not-reply
@@ -66,7 +72,9 @@ class MyClient(discord.Client):
                     await message.channel.send(embed=self.ol.lookup(par))
 
         # non-htm * commands
-        if msplit[0] == 'bonk' and len(msplit) == 1:
+        if msplit[0] == 'oof':
+            await message.channel.send('rip')
+        elif msplit[0] == 'bonk' and len(msplit) == 1:
             await message.channel.send(':regional_indicator_b: '
                                        ':regional_indicator_o: '
                                        ':regional_indicator_n: '
