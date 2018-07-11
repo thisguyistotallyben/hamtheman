@@ -61,7 +61,7 @@ class MyClient(discord.Client):
                     await message.channel.send(embed=utc())
                 elif command == 'cond':
                     await message.channel.send(file=cond())
-                elif msplit[0] == 'kerchunk':
+                elif command == 'kerchunk':
                     await message.channel.send('H...A...M...T...H...E...M...A...N...Repeater *kksshh*')
 
             # commands that do need parameters
