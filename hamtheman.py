@@ -20,6 +20,13 @@ from utils.onlinelookup import htmlookup
 
 block_list = []
 
+help_message = ("**morse [message]:** Translates a message into morse code\n"
+                "**cond:** Gives solar conditions\n"
+                "**call [callsign]:** gives information on a call sign\n"
+                "**utc:** gives the time in UTC\n"
+                "**kerchunk:** pretend htm is a repeater\n"
+                "\n**This bot is also responsible for the oofs and bonks**")
+
 
 class MyClient(discord.Client):
     def __init__(self):
@@ -57,6 +64,9 @@ class MyClient(discord.Client):
 
             # commands that do not need parameters
             if len(msplit) == 2:
+                if command == 'help':
+                    em = discord.Embed(title='Help (Preface commands with \'htm\')', description=help_message, colour=0x00c0ff)
+                    await message.channel.send(embed=em)
                 if command == 'utc':
                     await message.channel.send(embed=utc())
                 elif command == 'cond':
