@@ -13,26 +13,17 @@ import json
 
 from utils import morse
 from utils import dbotsocket
+from utils.misc import *
 from utils.utc import utc
 from utils.cond import cond
 from utils.onlinelookup import htmlookup
-
-
-block_list = []
-
-help_message = ("**morse [message]:** Translates a message into morse code\n"
-                "**cond:** Gives solar conditions\n"
-                "**call [callsign]:** gives information on a call sign\n"
-                "**utc:** gives the time in UTC\n"
-                "**kerchunk:** pretend htm is a repeater\n"
-                "\n**This bot is also responsible for the oofs and bonks**")
 
 
 class MyClient(discord.Client):
     def __init__(self):
         self.ol = htmlookup.HtmLookup()
         self.morse = morse.Morse()
-        self.dbs = dbotsocket.DBotSocket(self, 50043)
+        #self.dbs = dbotsocket.DBotSocket(self, 50043)
         super().__init__()
 
     async def on_ready(self):
@@ -41,13 +32,13 @@ class MyClient(discord.Client):
         print('-------------------------------')
 
         # fill stats for dbotsocket
-        self.dbs.fill_stats(self)
+        #self.dbs.fill_stats(self)
 
     async def on_message(self, message):
         # do-not-reply
         if message.author == self.user:
             return
-        print(message.author, 'in', message.channel)
+        print(f'{message.author} in {message.guild}: {message.channel}')
         print('  ' + message.content)
 
         # split the message
@@ -65,14 +56,13 @@ class MyClient(discord.Client):
             # commands that do not need parameters
             if len(msplit) == 2:
                 if command == 'help':
-                    em = discord.Embed(title='Help (Preface commands with \'htm\')', description=help_message, colour=0x00c0ff)
-                    await message.channel.send(embed=em)
+                    await message.channel.send(embed=htm_help)
                 if command == 'utc':
                     await message.channel.send(embed=utc())
                 elif command == 'cond':
                     await message.channel.send(file=cond())
                 elif command == 'kerchunk':
-                    await message.channel.send('H...A...M...T...H...E...M...A...N...Repeater *kksshh*')
+                    await message.channel.send(htm_kerchunk)
 
             # commands that do need parameters
             elif len(msplit) == 3:
@@ -88,20 +78,9 @@ class MyClient(discord.Client):
         if msplit[0] == 'oof':
             await message.channel.send('rip')
         elif msplit[0] == 'bonk' and len(msplit) == 1:
-            await message.channel.send(':regional_indicator_b: '
-                                       ':regional_indicator_o: '
-                                       ':regional_indicator_n: '
-                                       ':regional_indicator_k:')
+            await message.channel.send(htm_bonk)
         elif msplit[0] == 'boonk':
-            await message.channel.send(':regional_indicator_b: '
-                                       ':regional_indicator_o: '
-                                       ':regional_indicator_o: '
-                                       ':regional_indicator_n: '
-                                       ':regional_indicator_k:     '
-                                       ':regional_indicator_g: '
-                                       ':regional_indicator_a: '
-                                       ':regional_indicator_n: '
-                                       ':regional_indicator_g:')
+            await message.channel.send(htm_boonk)
 
 with open('.discordkey.txt', 'r') as f:
     lines = f.readlines()
