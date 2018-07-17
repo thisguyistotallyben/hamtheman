@@ -13,6 +13,7 @@ import json
 
 from utils import morse
 from utils import dbotsocket
+from utils import stats
 from utils.misc import *
 from utils.utc import utc
 from utils.cond import cond
@@ -23,11 +24,12 @@ class MyClient(discord.Client):
     def __init__(self):
         self.ol = htmlookup.HtmLookup()
         self.morse = morse.Morse()
+        self.stats = stats.BotStats('HamTheMan')
         #self.dbs = dbotsocket.DBotSocket(self, 50043)
         super().__init__()
 
     async def on_ready(self):
-        await self.change_presence(activity=discord.Game(name="with Baofengs"))
+        await self.change_presence(activity=discord.Game(name="with Baofengs | htm help"))
         print('Shaking and also baking')
         print('-------------------------------')
 
@@ -63,6 +65,10 @@ class MyClient(discord.Client):
                     await message.channel.send(file=cond())
                 elif command == 'kerchunk':
                     await message.channel.send(htm_kerchunk)
+                elif command == 'uptime':
+                    await message.channel.send(self.stats.uptime())
+                elif command == 'standards':
+                    await message.channel.send('https://xkcd.com/927')
 
             # commands that do need parameters
             elif len(msplit) == 3:
