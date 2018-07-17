@@ -33,4 +33,4 @@ htm_kerchunk = 'H...A...M...T...H...E...M...A...N...Repeater *kksshh*'
 # help embed
 htm_help = discord.Embed(tite='Help: Preface commands with \'htm\'',
                             description=help_message,
-                            color=0x00c0ff
+                            color=0x00c0ff)
