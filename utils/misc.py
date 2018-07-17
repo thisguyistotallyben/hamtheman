@@ -14,7 +14,7 @@ help_message = ('**Core commands**\n'
                 '\n**#someta**\n'
                 '  **uptime:** Bot uptime\n'
                 '\n**The sillier things in life**\n'
-                '  **kerchunk:** pretend htm is a repeater\n'
+                '  **kerchunk:** Pretend htm is a repeater\n'
                 '  **standards:** To remind us how standards proliferate\n'
                 '\n**This bot is also responsible for the oofs and bonks**')
 
