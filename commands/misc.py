@@ -28,6 +28,13 @@ async def kerchunk(ctx):
     await ctx.send(htm_kerchunk)
 
 '''
+standards
+'''
+@bot.command()
+async def standards(ctx):
+    await ctx.send('https://xkcd.com/927')
+
+'''
 Help dialog
 '''
 @bot.command()
