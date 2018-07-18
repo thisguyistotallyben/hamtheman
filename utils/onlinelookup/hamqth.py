@@ -9,7 +9,7 @@ Uses HamQTH's API to retreive information on callsigns
 import os.path
 from urllib import request, error
 import xml.etree.ElementTree as et
-from onlinelookup import olerror
+from . import olerror
 
 
 # importorator
