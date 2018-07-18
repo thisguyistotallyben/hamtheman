@@ -4,7 +4,7 @@
 
 import discord
 
-from core import bot
+from core import bot, bonk, boonk
 from commands import lookup, misc, morse
 
 
@@ -16,13 +16,20 @@ async def on_ready():
 # every message goes through here
 @bot.event
 async def on_message(message):
-    print('message received')
-
     # make case-insensitive
     message.content = message.content.lower()
 
-    # process
-    await bot.process_commands(message)
+    # get the bonks and the oofs
+    if message.content == 'oof':
+        await message.channel.send('rip')
+    elif message.content == 'bonk':
+        await message.channel.send(bonk)
+    elif message.content.startswith('boonk'):
+        await message.channel.send(boonk)
+
+    # process everything else
+    else:
+        await bot.process_commands(message)
 
 # run the bot
 with open('keys/discord.txt', 'r') as f:
