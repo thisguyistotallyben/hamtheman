@@ -32,7 +32,14 @@ def calc_uptime():
     minutes = upsplit[1]
     seconds = upsplit[2].split('.', 1)[0]
 
-    rets = f'{days} days, {hours} hours, {minutes} minutes, {seconds} seconds'
+    # horribly complicated, but appeases my awful need for proper plurality
+
+    rets = ''
+    # TODO: Fix this
+    rets += f"{days} day{'s' if days == '1' else ''}, "
+    rets += f"{hours} hour{'s' if hours == '1' else ''}, "
+    rets += f"{minutes} minute{'s' if minutes == '1' else ''}, "
+    rets += f"{seconds} second{'s' if seconds == '1' else ''}"
 
     return rets
 
