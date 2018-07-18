@@ -19,7 +19,7 @@ async def on_message(message):
     # make case-insensitive
     message.content = message.content.lower()
 
-    # get the bonks and the oofs
+    # get the bonks, boonks, and the oofs
     if message.content == 'oof':
         await message.channel.send('rip')
     elif message.content == 'bonk':
