@@ -2,7 +2,7 @@ import os
 import wget
 import discord
 
-from common import bot, call_lookup
+from core import bot, call_lookup
 from onlinelookup import olerror
 
 
