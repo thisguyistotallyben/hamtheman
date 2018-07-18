@@ -60,17 +60,17 @@ class HamQTHLookup:
         raises LookupVerificationError: if login is bad
         """
         # look for appropriate files
-        if not os.path.exists('.onlinelookup-login.txt'):
+        if not os.path.exists('keys/hamqth-login.txt'):
             raise olerror.LookupVerificationError('HamQTH')
-        with open('.onlinelookup-login.txt', 'r') as f:
+        with open('keys/hamqth-login.txt', 'r') as f:
             lines = f.readlines()
             if len(lines) != 2:
                 raise olerror.LookupVerificationError('HamQTH')
             else:
                 self.username = lines[0].strip()
                 self.password = lines[1].strip()
-        if os.path.exists('.onlinelookup-key.txt'):
-            with open('.onlinelookup-key.txt', 'r') as f:
+        if os.path.exists('keys/hamqth-key.txt'):
+            with open('keys/hamqth-key.txt', 'r') as f:
                 lines = f.readlines()
                 if len(lines) != 1:
                     self.get_key()
@@ -113,7 +113,7 @@ class HamQTHLookup:
             self.key = root[0][0].text
 
             # write to a file
-            with open('.onlinelookup-key.txt', 'w') as f:
+            with open('keys/hamqth-key.txt', 'w') as f:
                 f.write(self.key)
                 f.close()
 

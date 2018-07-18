@@ -3,6 +3,34 @@
 
 
 import discord
+
+from common import bot
+from commands.lookup import call, cond
+from commands.misc import bonk, boonk, kerchunk
+from commands.morse import morse#, unmorse
+
+
+@bot.event
+async def on_ready():
+    print('Shaking and Baking')
+
+@bot.event
+async def on_message(message):
+    print('message received')
+
+    # make case-insensitive
+    message.content = message.content.lower()
+
+    # process
+    await bot.process_commands(message)
+
+# run the bot
+with open('keys/discord.txt', 'r') as f:
+    lines = f.readlines()
+    if len(lines) == 1:
+        bot.run(lines[0].strip())
+
+'''
 import asyncio
 import os
 import socket
@@ -93,3 +121,4 @@ with open('.discordkey.txt', 'r') as f:
     if len(lines) == 1:
         client = MyClient()
         client.run(lines[0].strip())
+'''
