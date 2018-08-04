@@ -36,10 +36,10 @@ def calc_uptime():
 
     rets = ''
     # TODO: Fix this
-    rets += f"{days} day{'s' if days == '1' else ''}, "
-    rets += f"{hours} hour{'s' if hours == '1' else ''}, "
-    rets += f"{minutes} minute{'s' if minutes == '1' else ''}, "
-    rets += f"{seconds} second{'s' if seconds == '1' else ''}"
+    rets += f"{days} day{'' if days == '1' else 's'}, "
+    rets += f"{hours} hour{'' if hours == '1' else 's'}, "
+    rets += f"{minutes} minute{'' if minutes == '1' else 's'}, "
+    rets += f"{seconds} second{'' if seconds == '1' else 's'}"
 
     return rets
 
