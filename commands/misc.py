@@ -47,10 +47,10 @@ About dialog
 @bot.command()
 async def about(ctx):
     abstr = htm_about + calc_uptime()
-    em = discord.Embed(title='About HamTheMan v2.1',
+    em = discord.Embed(title='About HamTheMan',
                        description=abstr,
                        color=0x00c0ff)
-    em = em.set_footer(text='Licensed under the MIT License')
+    em = em.set_footer(text='Version 2.1')
 
     # send it
     await ctx.send(embed=em)

@@ -122,6 +122,8 @@ htm_about = ('**Author**\n'
              '\tOnline callsign lookups from HamQTH and callook.info\n'
              '\n**Source Code**\n'
              '\thttps://github.com/thisguyistotallyben/hamtheman\n'
+             '\n**Invite Link**\n'
+             '\thttps://discordapp.com/api/oauth2/authorize?client_id=368613435543650314&permissions=8&scope=bot\n'
              '\n**Uptime**\n\t')
 
 # help dialog
@@ -131,8 +133,8 @@ help_message = ('**Core commands**\n'
                 '\t**call [callsign]:** Callsign information (Sources: HamQTH, callook.info)\n'
                 '\t**morse [message]:** Translates a message into morse code (use quotes)\n'
                 '\n**#someta**\n'
-                '\t**uptime:** Bot uptime\n'
                 '\t**about:** About the bot\n'
+                '\t**uptime:** Bot uptime\n'
                 '\n**The sillier things in life**\n'
                 '\t**kerchunk:** Pretend htm is a repeater\n'
                 '\t**standards:** To remind us how standards proliferate\n'
