@@ -30,7 +30,11 @@ def calc_uptime():
 
     hours = upsplit[0]
     minutes = upsplit[1]
+    if minutes[0] == '0':
+        minutes = minutes[1]
     seconds = upsplit[2].split('.', 1)[0]
+    if seconds[0] == '0':
+        seconds = seconds[1]
 
     # horribly complicated, but appeases my awful need for proper plurality
 
