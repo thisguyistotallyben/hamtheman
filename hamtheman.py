@@ -11,6 +11,7 @@ from commands import lookup, misc, morse
 # startup stuff
 @bot.event
 async def on_ready():
+    await bot.change_presence(activity=discord.Game(name="with Baofengs | htm help"))
     print('Shaking and Baking')
 
 # every message goes through here
