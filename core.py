@@ -38,8 +38,8 @@ def calc_uptime():
     # TODO: Fix this
     rets += f"{days} day{'' if days == '1' else 's'}, "
     rets += f"{hours} hour{'' if hours == '1' else 's'}, "
-    rets += f"{minutes} minute{'' if minutes == '1' else 's'}, "
-    rets += f"{seconds} second{'' if seconds == '1' else 's'}"
+    rets += f"{minutes} minute{'' if minutes == '01' else 's'}, "
+    rets += f"{seconds} second{'' if seconds == '01' else 's'}"
 
     return rets
 
