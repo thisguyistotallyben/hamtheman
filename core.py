@@ -128,8 +128,8 @@ htm_about = ('**Author**\n'
 
 # help dialog
 help_message = ('**Core commands**\n'
-                '\t**cond**: Solar conditions (Source: hamqsl.com)\n'
-                '\t**utc:**: Time in UTC\n'
+                '\t**cond:** Solar conditions (Source: hamqsl.com)\n'
+                '\t**utc:** Time in UTC\n'
                 '\t**call [callsign]:** Callsign information (Sources: HamQTH, callook.info)\n'
                 '\t**morse [message]:** Translates a message into morse code (use quotes)\n'
                 '\n**#someta**\n'
@@ -138,6 +138,7 @@ help_message = ('**Core commands**\n'
                 '\n**The sillier things in life**\n'
                 '\t**kerchunk:** Pretend htm is a repeater\n'
                 '\t**standards:** To remind us how standards proliferate\n'
+                '\t**oofs:** Counts all oofs in all servers since last reboot\n'
                 '\n**This bot is also responsible for the oofs and bonks**')
 
 help_embed = discord.Embed(title='Help: Preface commands with \'htm\'',
