@@ -1,5 +1,6 @@
 from datetime import datetime
 
+import core
 from core import *
 from core import bot, help_embed, htm_kerchunk, htm_about
 
@@ -61,3 +62,12 @@ Uptime
 @bot.command()
 async def uptime(ctx):
     await ctx.send(calc_uptime())
+
+'''
+Oof counter
+TODO: make this server specific
+'''
+@bot.command()
+async def oofs(ctx):
+    c = core.oof_count
+    await ctx.send(f'There have been {c} oofs in all servers since last reboot')

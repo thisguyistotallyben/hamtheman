@@ -144,6 +144,9 @@ help_embed = discord.Embed(title='Help: Preface commands with \'htm\'',
                             description=help_message,
                             color=0x00c0ff)
 
+# oof counter
+oof_count = 15
+
 # birth of a bot
 bot = discord.ext.commands.Bot(command_prefix='htm ',
                                description=help_message)
