@@ -24,7 +24,6 @@ async def on_message(message):
     # get the bonks, boonks, and the oofs
     if message.content == 'oof':
         core.oof_count += 1
-        print(core.oof_count)
         await message.channel.send('rip')
     elif message.content == 'bonk':
         await message.channel.send(bonk)
