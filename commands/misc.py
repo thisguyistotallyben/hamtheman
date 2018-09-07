@@ -70,4 +70,4 @@ TODO: make this server specific
 @bot.command()
 async def oofs(ctx):
     c = core.oof_count
-    await ctx.send(f'There have been {c} oofs in all servers since last reboot')
+    await ctx.send(f'Number of oofs since last reboot: {c}')
