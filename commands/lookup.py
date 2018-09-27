@@ -16,8 +16,8 @@ async def call(ctx, callsign:str):
     with ctx.typing():
         result = call_lookup.lookup(callsign)
 
-        # send it
-        await ctx.send(embed=result)
+    # send it
+    await ctx.send(embed=result)
 
 '''
 Band conditions sourced from hamqsl
@@ -35,4 +35,4 @@ async def cond(ctx):
 
         # send it
         f = discord.File('conditions.gif')
-        await ctx.send(file=f)
+    await ctx.send(file=f)
