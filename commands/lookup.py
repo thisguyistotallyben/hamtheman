@@ -1,5 +1,5 @@
 import os
-import wget
+import requests
 import discord
 
 from core import bot, call_lookup
@@ -23,14 +23,13 @@ Band conditions sourced from hamqsl
 '''
 @bot.command()
 async def cond(ctx):
-    print('cond')
     # remove possibly conficting old file
     if os.path.isfile("conditions.gif"):
         os.remove("conditions.gif")
 
     # download the latest conditions
-    wget.download("http://www.hamqsl.com/solar101pic.php",
-                  "conditions.gif", bar=None)
+    r = requests.get('https://www.hamqsl.com/solar101pic.php')
+    open('conditions.gif', 'wb').write(r.content)
 
     # send it
     f = discord.File('conditions.gif')
