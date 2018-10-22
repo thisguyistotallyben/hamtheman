@@ -9,7 +9,7 @@ class HtmLookup():
 
         self.hamqth.connect()
 
-    def lookup(self, call):
+    def lookup(self, call, params):
         clfail = False
         hqfail = False
 

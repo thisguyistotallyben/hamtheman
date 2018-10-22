@@ -9,37 +9,11 @@ Uses HamQTH's API to retreive information on callsigns
 import os.path
 from urllib import request, error
 import xml.etree.ElementTree as et
-from . import olerror
+from . import olerror, olresult
 
 
 # importorator
 __all__ = ['HamQTHLookup']
-
-
-# return class
-class LookupResult:
-    def __init__(self):
-        # basic info
-        self.callsign = ''
-        self.name = ''
-
-        # location
-        self.country = ''
-        self.grid = ''
-        self.itu = ''
-        self.cq = ''
-        self.zip = ''
-        self.state = ''
-        self.city = ''
-
-        # raw data
-        self.raw = {}
-
-        # other info
-        self.street1 = ''
-        self.street2 = ''
-
-        self.raw = {}
 
 
 # hamqth lookup class
@@ -142,7 +116,7 @@ class HamQTHLookup:
             raise olerror.LookupActiveError('HamQTH')
 
         # setup
-        lr = LookupResult()
+        lr = olresult.LookupResult()
         retdict = {}
 
         # make request
