@@ -1,6 +1,5 @@
 import discord
 from . import hamqth, callook, olerror
-# import callook
 
 class HtmLookup():
     def __init__(self):

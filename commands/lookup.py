@@ -3,7 +3,7 @@ import requests
 import xml.etree.ElementTree as et
 import discord
 
-from core import bot, call_lookup
+from hamtheman import bot, call_lookup
 from onlinelookup import olerror
 
 
