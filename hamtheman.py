@@ -83,6 +83,8 @@ class MyClient(discord.Client):
         # non-htm * commands
         if msplit[0] == 'oof':
             await message.channel.send('rip')
+        elif msplit[0] == '||oof||':
+            await message.channel.send('||rip||')    
         elif msplit[0] == 'bonk' and len(msplit) == 1:
             await message.channel.send(htm_bonk)
         elif msplit[0] == 'boonk':
