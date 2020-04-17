@@ -7,10 +7,6 @@ class MorseCog(commands.Cog):
         self.bot = bot
         self._last_member = None
 
-    @commands.Cog.listener()
-    async def on_message(self, message):
-        pass
-
     @commands.command()
     async def morse(self, ctx, *, text: str):
         morse_text = ''
@@ -22,36 +18,11 @@ class MorseCog(commands.Cog):
                 morse_text += '<?>'
             morse_text += '  '
 
-        await ctx.send('morse_text')
+        await ctx.send(morse_text)
 
 
 def setup(bot):
         bot.add_cog(MorseCog(bot))
-
-
-
-
-
-# import discord
-
-# from hamtheman import bot
-
-# '''
-# Translates from text to periods and dashes
-# '''
-
-
-# @bot.command()
-# async def morse(ctx, *, text: str):
-#     morsemess = ''
-#     for i in text:
-#         if i in to_morse:
-#             morsemess += to_morse[i]
-#         else:
-#             morsemess += '<?>'
-#         morsemess += '  '
-
-#     await ctx.send(morsemess)
 
 
 # '''
