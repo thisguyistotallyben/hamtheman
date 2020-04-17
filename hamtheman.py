@@ -1,4 +1,4 @@
-# Author:  Benjamin Johnson
+# Author:  Benjamin Johnson (AB3NJ)
 # Purpose: It performs various ham radio-related tasks
 
 
@@ -6,7 +6,7 @@ import discord
 from discord.ext import commands
 
 
-cogs = ['commands.morse', 'commands.cog_loader']
+cogs = ['module.morse', 'module.loader']
 
 
 class HamTheManBot(commands.Bot):
@@ -21,7 +21,7 @@ bot = HamTheManBot(command_prefix=commands.when_mentioned_or('htm '))
 for cog in cogs:
     bot.load_extension(cog)
 
-bot.run('temporary key loading spot')
+bot.run('discord key goes here')
 
 
 
