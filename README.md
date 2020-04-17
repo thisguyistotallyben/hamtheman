@@ -1,10 +1,11 @@
 # hamtheman
 HamTheMan (htm) is a Discord bot for various ham radio related things.
 
-## Update (04/17/2020)
+### Update (04/17/2020)
 I am finally getting around to updating/restructuring the bot. Check the `cogs` branch for dem sweet updates. It's not ready for rocking and rolling, but it's on its way.
 
-The most up-to-date version is in the `rewrite` branch, and is currently suitable for running. (THIS IS A FALLACY: Go one commit back in that branch)
+### What to run
+The most up-to-date working version is in the `rewrite` branch, and is currently suitable for running. (THIS IS A FALLACY: Go one commit back in that branch)
 
 ## Getting started
 
