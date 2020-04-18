@@ -1,10 +1,10 @@
-# hamtheman
-HamTheMan (htm) is a Discord bot for various ham radio related things
+# HamTheMan
+HamTheMan (htm) is a Discord bot for various ham radio related things, including callsign lookups (globally with HamQTH), solar conditions, time, and a morse code translator. 
 
 ## Status
 As of April 18, 2020, this bot is in a nearly complete state of rewrite number 3, official version 2, probably. Hopefully, this will very soon be pushed to master
 
-## Getting started
+# Getting started
 Make sure you are running Python 3.6 or higher.
 
 ### Discord
