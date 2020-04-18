@@ -19,9 +19,10 @@ from discord.ext import commands
 
 cogs = ['modules.state',
         'modules.utils.embed',
-        'modules.morse',
         'modules.loader',
+        'modules.lookup',
         'modules.misc',
+        'modules.morse',
         'modules.reactions']
 
 
