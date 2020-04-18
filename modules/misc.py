@@ -56,7 +56,8 @@ class MiscCog(commands.Cog):
         await ctx.send(embed=self.embed_service
             .generate(
                 title="Help",
-                description=htm_about + self.calc_uptime()
+                description=htm_about + self.calc_uptime(),
+                footer="HamTheMan Version 3.0"
             )
         )
 
@@ -127,7 +128,7 @@ htm_about = ('**Author**\n'
              '\tDiscord: thisguyistotallyben#3699\n'
              '\n**Tools**\n'
              '\tPython 3.6\n'
-             '\tDiscord API v1.0.0\n'
+             '\tDiscord API v1.3.3\n'
              '\n**Data Sources**\n'
              '\tSolar conditions from hamqsl.com\n'
              '\tOnline callsign lookups from HamQTH and callook.info\n'

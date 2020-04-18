@@ -45,7 +45,7 @@ with open('config.json', 'r') as f:
     config['accent color'] = int(config['accent color'], 16)
     print('  config loaded.')
 
-bot = HamTheManBot(command_prefix=commands.when_mentioned_or('!'))
+bot = HamTheManBot(command_prefix=commands.when_mentioned_or('htm '))
 
 # discord-y things
 bot.remove_command('help')
