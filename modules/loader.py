@@ -18,7 +18,6 @@ class LoaderCog(commands.Cog):
             await ctx.message.add_reaction(success_emoji)
         except Exception as e:
             await ctx.message.add_reaction(fail_emoji)
-            print(e)
 
     @commands.command()
     @commands.is_owner()
@@ -42,8 +41,6 @@ class LoaderCog(commands.Cog):
             await ctx.message.add_reaction(success_emoji)
         except Exception as e:
             await ctx.message.add_reaction(fail_emoji)
-            print(e)
-
 
     def get_module_path(self, module):
         return f'modules.{module}'

@@ -44,7 +44,6 @@ with open('config.json', 'r') as f:
     config = json.load(f)
     config['accent color'] = int(config['accent color'], 16)
     print('  config loaded.')
-    print('signing in...')
 
 bot = HamTheManBot(command_prefix=commands.when_mentioned_or('!'))
 
@@ -56,7 +55,10 @@ bot.owner_id = config['owner id']
 bot.start_time = time.time()
 bot.config = config
 
+print('loading extensions...')
 for cog in cogs:
     bot.load_extension(cog)
+print('  done.')
+print('starting bot...')
 
 bot.run(config['discord key'])

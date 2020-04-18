@@ -22,7 +22,6 @@ key_file = 'hamqth_key.txt'
 # hamqth lookup class
 class HamQTHLookup:
     def __init__(self, username, password):
-        print(f'init hamqth with {username} and {password}')
         self.username = username
         self.password = password
         self.key = None
@@ -40,9 +39,7 @@ class HamQTHLookup:
         raises LookupVerificationError: if login is bad
         """
         # look for an existing key
-        print('looking for a key')
         if os.path.exists(key_file):
-            print('  key exists')
             with open(key_file, 'r') as f:
                 lines = f.readlines()
                 if len(lines) != 1:
@@ -51,7 +48,6 @@ class HamQTHLookup:
                     self.key = lines[0].strip()
                     self.active = True
         else:
-            print('  key does not exist')
             self.get_key()
 
     def get_key(self):
@@ -63,7 +59,6 @@ class HamQTHLookup:
         raises LookupVerificationError: If login is bad
         """
         # make request
-        print('logging in to a session')
         req = (f'https://www.hamqth.com/xml.php'
                f'?u={self.username}'
                f'&p={self.password}')

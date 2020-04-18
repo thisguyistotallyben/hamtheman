@@ -73,7 +73,6 @@ class MiscCog(commands.Cog):
 
         upsplit = upsplit[0].split(':')
         if len(upsplit) != 3:
-            print('Something happened')
             return ''
 
         hours = upsplit[0]

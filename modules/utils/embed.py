@@ -15,7 +15,6 @@ class EmbedCog(commands.Cog):
             title = kwargs['title']
         if 'description' in kwargs:
             description = kwargs['description']
-            print(description)
         if 'footer' in kwargs:
             footer = kwargs['footer']
 
