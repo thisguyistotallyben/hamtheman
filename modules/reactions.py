@@ -15,6 +15,23 @@ class ReactionsCog(commands.Cog):
         if message.content.startswith('oof'):
             await message.channel.send('rip')
             self.state.get_config()['oofs'] += 1
+        elif message.content == 'bonk':
+            await message.channel.send((
+                ':regional_indicator_b: '
+                ':regional_indicator_o: '
+                ':regional_indicator_n: '
+                ':regional_indicator_k:'))
+        elif message.content == 'boonk':
+            await message.channel.send((
+                ':regional_indicator_b: '
+                ':regional_indicator_o: '
+                ':regional_indicator_o: '
+                ':regional_indicator_n: '
+                ':regional_indicator_k:     '
+                ':regional_indicator_g: '
+                ':regional_indicator_a: '
+                ':regional_indicator_n: '
+                ':regional_indicator_g:'))
 
     @commands.command()
     async def oofs(self, ctx):
