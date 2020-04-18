@@ -7,10 +7,6 @@ I'm thinking for this, I'll have a main "entry" point of 'get' and 'set'
 
 Set
 - presence
-
-TODO
-    - Add 'admin only' rights to these commands because they would totally
-      be abused
 '''
 
 

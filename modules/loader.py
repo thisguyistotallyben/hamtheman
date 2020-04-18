@@ -2,12 +2,6 @@ import discord
 from discord.ext import commands
 
 
-'''
-TODO
-    - Add 'admin only' rights to these commands because they would totally
-      be abused
-'''
-
 success_emoji = '✅'
 fail_emoji = '❌'
 
