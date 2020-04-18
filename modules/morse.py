@@ -7,6 +7,8 @@ class MorseCog(commands.Cog):
         self.bot = bot
         self._last_member = None
 
+        self.embed_Service = bot.get_cog('EmbedCog')
+
     @commands.command()
     async def morse(self, ctx, *, text: str):
         morse_text = ''
@@ -18,7 +20,7 @@ class MorseCog(commands.Cog):
                 morse_text += '<?>'
             morse_text += '  '
 
-        await ctx.send(morse_text)
+        await ctx.send(embed=self.embed_Service.generate(description=morse_text))
 
 
 def setup(bot):

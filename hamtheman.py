@@ -6,7 +6,7 @@ import discord
 from discord.ext import commands
 
 
-cogs = ['module.morse', 'module.loader']
+cogs = ['modules.state', 'modules.utils.embed', 'modules.morse', 'modules.loader']
 
 
 class HamTheManBot(commands.Bot):
@@ -21,7 +21,7 @@ bot = HamTheManBot(command_prefix=commands.when_mentioned_or('htm '))
 for cog in cogs:
     bot.load_extension(cog)
 
-bot.run('discord key goes here')
+bot.run('put code here')
 
 
 
