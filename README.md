@@ -1,22 +1,20 @@
-# hamtheman
-HamTheMan (htm) is a Discord bot for various ham radio related things.
+# HamTheMan
+HamTheMan (htm) is a Discord bot for various ham radio related things, including callsign lookups (globally with HamQTH), solar conditions, time, and a morse code translator.
 
-### Update (04/17/2020)
-I am finally getting around to updating/restructuring the bot. Check the `cogs` branch for dem sweet updates. It's not ready for rocking and rolling, but it's on its way.
-
-### What to run
-The most up-to-date working version is in the `rewrite` branch, and is currently suitable for running. (THIS IS A FALLACY: Go one commit back in that branch)
-
-## Getting started
+# Getting started
+Make sure you are running Python 3.6 or higher.
 
 ### Discord
-First, you need the correct version of the Discord API.
+You need discord.py: `pip3 install discord.py` or `pip3 install -U discord.py`
 
-`python3 -m pip uninstall discord`
+### API Keys
+You then need an API key for your bot (https://discordapp.com/developers/applications/) and an account with HamQTH (https://hamqth.com).
 
-`python3 -m pip install -U https://github.com/Rapptz/discord.py/archive/rewrite.zip#egg=discord.py[voice]`
+### Setup
+Setup is pretty simple. You need to copy/rename the file `config_default.json` to `config.json` and fill in the information inside.
 
-## Noteworthy stuff
-You need a text file titled '.discordkey.txt' and a Discord key inside it to run the bot.
+See the API keys section above for the fields `discord key` and `hamqth`.
 
-Also, you will need a hamqth.com account with your callsign and password (each on a new line) in a file titled '.onlinelookup-login.txt'.  Otherwise, it will throw a LookupVerificationError.
+The accent color is the hex code of the color that highlights embeds.
+
+The `owner id` field is for you. Find your Discord user id (a long number, not your username#0000) and put it here.

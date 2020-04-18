@@ -9,41 +9,11 @@ Uses Callook's API to retreive information on callsigns
 import json
 import os.path
 from urllib import request, error
-from . import olerror
+from . import olerror, olresult
 
 
 # importorator
 __all__ = ['CallookLookup']
-
-
-# return class
-class CallookResult:
-    def __init__(self):
-        # basic info
-        self.callsign = ''
-        self.prevcall = ''
-        self.name = ''
-        self.opclass = ''
-
-        # location
-        self.country = ''
-        self.grid = ''
-        self.zip = ''
-        self.state = ''
-        self.city = ''
-
-
-        # club stuff
-        self.club = False
-        self.trusteename = ''
-        self.trusteecall = ''
-
-        # ULS stuff
-        self.frn = ''
-        self.uls = ''
-
-        # raw data
-        self.raw = {}
 
 
 def prettify(name):
@@ -72,8 +42,7 @@ class CallookLookup:
         """
 
         # setup
-        lr = CallookResult()
-        retdict = {}
+        lr = olresult.LookupResult()
 
         # make request
         req = (f'https://callook.info/{call}/json')
@@ -86,6 +55,8 @@ class CallookLookup:
             raise olerror.LookupResultError('Callook')
 
         # ## GET THE GOODS ## #
+
+        lr.source = 'Callook'
 
         # basic info
         lr.callsign = data['current']['callsign']

@@ -1,97 +1,64 @@
-# Author:  Benjamin Johnson
+# Author:  Benjamin Johnson (AB3NJ)
 # Purpose: It performs various ham radio-related tasks
 
+'''
+ONE SMALL LITTLE BIT OF SETUP: PLEASE READ
 
-import discord
-import asyncio
-import os
-import socket
+Copy the file 'config_default.json' and name it 'config.json'.
 
-from random import randint
+Then, fill out the information inside of it with the appropriate data.
 
+TODO: Put the config in the bot itself instead of weirdly passing it around in the state cog
+'''
+
+import time
 import json
-
-from utils import morse
-from utils import dbotsocket
-from utils import stats
-from utils.misc import *
-from utils.utc import utc
-from utils.cond import cond
-from utils.onlinelookup import htmlookup
+import discord
+from discord.ext import commands
 
 
-class MyClient(discord.Client):
-    def __init__(self):
-        self.ol = htmlookup.HtmLookup()
-        self.morse = morse.Morse()
-        self.stats = stats.BotStats('HamTheMan')
-        #self.dbs = dbotsocket.DBotSocket(self, 50043)
-        super().__init__()
+cogs = ['modules.state',
+        'modules.utils.embed',
+        'modules.morse',
+        'modules.loader',
+        'modules.misc',
+        'modules.reactions']
 
+
+class HamTheManBot(commands.Bot):
     async def on_ready(self):
-        await self.change_presence(activity=discord.Game(name="with Baofengs | htm help"))
-        print('Shaking and also baking')
-        print('-------------------------------')
-
-        # fill stats for dbotsocket
-        #self.dbs.fill_stats(self)
-
-    async def on_message(self, message):
-        # do-not-reply
-        if message.author == self.user:
-            return
-        print(f'{message.author} in {message.guild}: {message.channel}')
-        print('  ' + message.content)
-
-        # split the message
-        msplit = message.content.lower().split(' ', 2)
-
-        # htm * commands
-        if msplit[0] == 'htm':
-            # no content
-            if len(msplit) == 1:
-                return
-
-            # get command
-            command = msplit[1]
-
-            # commands that do not need parameters
-            if len(msplit) == 2:
-                if command == 'help':
-                    await message.channel.send(embed=htm_help)
-                if command == 'utc':
-                    await message.channel.send(embed=utc())
-                elif command == 'cond':
-                    await message.channel.send(file=cond())
-                elif command == 'kerchunk':
-                    await message.channel.send(htm_kerchunk)
-                elif command == 'uptime':
-                    await message.channel.send(self.stats.uptime())
-                elif command == 'standards':
-                    await message.channel.send('https://xkcd.com/927')
-
-            # commands that do need parameters
-            elif len(msplit) == 3:
-                par = msplit[2]
-                if command == 'morse':
-                    await message.channel.send(self.morse.translate_text(par))
-                elif command == 'call':
-                    print('here')
-                    await message.channel.send(embed=self.ol.lookup(par))
+        await self.change_presence(
+            activity=discord.Game(name="with Baofengs | htm help"))
+        print(f'  Username: {self.user}')
+        print(f'  Servers:  {len(self.guilds)}')
+        print('-----\nReady...')
 
 
-        # non-htm * commands
-        if msplit[0] == 'oof':
-            await message.channel.send('rip')
-        elif msplit[0] == '||oof||':
-            await message.channel.send('||rip||')    
-        elif msplit[0] == 'bonk' and len(msplit) == 1:
-            await message.channel.send(htm_bonk)
-        elif msplit[0] == 'boonk':
-            await message.channel.send(htm_boonk)
+# THIS IS WHERE THE MAGIC STARTS
 
-with open('.discordkey.txt', 'r') as f:
-    lines = f.readlines()
-    if len(lines) == 1:
-        client = MyClient()
-        client.run(lines[0].strip())
+print('WELCOME TO HAM THE MAN\n-----')
+
+config = {}
+with open('config.json', 'r') as f:
+    print('loading config...')
+    config = json.load(f)
+    config['accent color'] = int(config['accent color'], 16)
+    print('  config loaded.')
+
+bot = HamTheManBot(command_prefix=commands.when_mentioned_or('!'))
+
+# discord-y things
+bot.remove_command('help')
+bot.owner_id = config['owner id']
+
+# custom variables
+bot.start_time = time.time()
+bot.config = config
+
+print('loading extensions...')
+for cog in cogs:
+    bot.load_extension(cog)
+print('  done.')
+print('starting bot...')
+
+bot.run(config['discord key'])
