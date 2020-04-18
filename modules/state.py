@@ -17,7 +17,6 @@ class StateCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.config = {}
-        self.bot_color = 0x00c0ff # TODO: make this from a config sometime
 
     @commands.command()
     @commands.is_owner()
@@ -33,12 +32,6 @@ class StateCog(commands.Cog):
 
     async def set_color(self, color):
         self.bot_color = color
-
-    def set_config(self, config):
-        self.config = config
-
-    def get_config(self):
-        return self.config
 
     def get_color(self):
         return self.bot_color

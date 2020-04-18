@@ -1,6 +1,7 @@
 {
     "discord key": "put your Discord key here",
     "owner id": 0,
+    "accent color": "0x00c0ff",
     "hamqth": {
         "username": "put username here",
         "password": "put password here"

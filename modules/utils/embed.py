@@ -6,10 +6,6 @@ class EmbedCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-        # requires state cog to be loaded
-        self.state_service = bot.get_cog('StateCog')
-        print(self.state_service)
-
     def generate(self, **kwargs):
         title = ''
         description = ''
@@ -21,7 +17,7 @@ class EmbedCog(commands.Cog):
 
         return discord.Embed(title=title,
                              description=description,
-                             colour=self.state_service.get_color())
+                             colour=self.bot.config['accent color'])
 
 
 def setup(bot):
