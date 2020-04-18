@@ -1,7 +1,16 @@
 # Author:  Benjamin Johnson (AB3NJ)
 # Purpose: It performs various ham radio-related tasks
 
+'''
+ONE SMALL LITTLE BIT OF SETUP: PLEASE READ
 
+Copy the file 'config_default.json' and name it 'config.json'.
+
+Then, fill out the information inside of it with the appropriate data.
+'''
+
+
+import json
 import discord
 from discord.ext import commands
 
@@ -16,13 +25,20 @@ class HamTheManBot(commands.Bot):
         print('Beep boop I am {0}'.format(self.user))
 
 
+# THIS IS WHERE THE MAGIC STARTS
+
+config = {}
+with open('config.json', 'r') as f:
+    config = json.load(f)
+    print('config loaded')
+
 bot = HamTheManBot(command_prefix=commands.when_mentioned_or('htm '))
-bot.owner_id = 0 # Put your id here
+bot.owner_id = config['owner id']
 
 for cog in cogs:
     bot.load_extension(cog)
 
-bot.run('put your key here')
+bot.run(config['discord key'])
 
 
 
