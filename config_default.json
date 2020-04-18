@@ -1,6 +1,6 @@
 {
     "discord key": "put your Discord key here",
-    "owner id": "put your owner id here (the long number)",
+    "owner id": 0,
     "hamqth": {
         "username": "put username here",
         "password": "put password here"
