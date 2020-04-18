@@ -23,6 +23,7 @@ class StateCog(commands.Cog):
         self.bot_color = 0x00c0ff # TODO: make this from a config sometime
 
     @commands.command()
+    @commands.is_owner()
     async def set(self, ctx, command: str, *, args: str):
         if command == 'status':
             await self.set_status(ctx, args)
@@ -38,8 +39,6 @@ class StateCog(commands.Cog):
 
     def get_color(self):
         return self.bot_color
-
-
 
 
 def setup(bot):

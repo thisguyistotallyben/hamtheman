@@ -17,6 +17,7 @@ class LoaderCog(commands.Cog):
         self.bot = bot
 
     @commands.command()
+    @commands.is_owner()
     async def load(self, ctx, *, module: str):
         try:
             self.bot.load_extension(self.get_module_path(module))
@@ -26,6 +27,7 @@ class LoaderCog(commands.Cog):
             print(e)
 
     @commands.command()
+    @commands.is_owner()
     async def unload(self, ctx, *, module: str):
         ''' please do not delete yourself '''
         if module == 'loader':
@@ -39,6 +41,7 @@ class LoaderCog(commands.Cog):
             await ctx.message.add_reaction(fail_emoji)
 
     @commands.command()
+    @commands.is_owner()
     async def reload(self, ctx, *, module: str):
         try:
             self.bot.reload_extension(self.get_module_path(module))
@@ -46,8 +49,6 @@ class LoaderCog(commands.Cog):
         except:
             await ctx.message.add_reaction(fail_emoji)
 
-    def cog_check(self, ctx):
-        return True
 
     def get_module_path(self, module):
         return f'modules.{module}'

@@ -17,11 +17,12 @@ class HamTheManBot(commands.Bot):
 
 
 bot = HamTheManBot(command_prefix=commands.when_mentioned_or('htm '))
+bot.owner_id = 0 # Put your id here
 
 for cog in cogs:
     bot.load_extension(cog)
 
-bot.run('put code here')
+bot.run('put your key here')
 
 
 
