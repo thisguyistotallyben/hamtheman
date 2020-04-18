@@ -29,7 +29,9 @@ class HamTheManBot(commands.Bot):
     async def on_ready(self):
         await self.change_presence(
             activity=discord.Game(name="with Baofengs | htm help"))
-        print('My username is: {0}\n-----\nReady...'.format(self.user))
+        print(f'  Username: {self.user}')
+        print(f'  Servers:  {len(self.guilds)}')
+        print('-----\nReady...')
 
 
 # THIS IS WHERE THE MAGIC STARTS
@@ -42,6 +44,7 @@ with open('config.json', 'r') as f:
     config = json.load(f)
     config['accent color'] = int(config['accent color'], 16)
     print('  config loaded.')
+    print('signing in...')
 
 bot = HamTheManBot(command_prefix=commands.when_mentioned_or('!'))
 

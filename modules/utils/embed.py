@@ -9,15 +9,21 @@ class EmbedCog(commands.Cog):
     def generate(self, **kwargs):
         title = ''
         description = ''
+        footer = ''
 
         if 'title' in kwargs:
             title = kwargs['title']
         if 'description' in kwargs:
             description = kwargs['description']
+            print(description)
+        if 'footer' in kwargs:
+            footer = kwargs['footer']
 
-        return discord.Embed(title=title,
-                             description=description,
-                             colour=self.bot.config['accent color'])
+        return discord.Embed(
+            title=title,
+            description=description,
+            colour=self.bot.config['accent color']
+        ).set_footer(text=footer)
 
 
 def setup(bot):

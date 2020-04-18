@@ -31,3 +31,6 @@ class LookupResult:
 
         # raw data
         self.raw = {}
+
+        # source
+        self.source = ''

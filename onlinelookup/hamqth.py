@@ -15,16 +15,22 @@ from . import olerror, olresult
 # importorator
 __all__ = ['HamQTHLookup']
 
+# key file location
+key_file = 'hamqth_key.txt'
+
 
 # hamqth lookup class
 class HamQTHLookup:
-    def __init__(self):
-        self.username = None
-        self.password = None
+    def __init__(self, username, password):
+        print(f'init hamqth with {username} and {password}')
+        self.username = username
+        self.password = password
         self.key = None
 
         self.active = False
         self.prefix = "{https://www.hamqth.com}"
+
+        self.connect()
 
     def connect(self):
         """
@@ -33,18 +39,11 @@ class HamQTHLookup:
 
         raises LookupVerificationError: if login is bad
         """
-        # look for appropriate files
-        if not os.path.exists('keys/hamqth-login.txt'):
-            raise olerror.LookupVerificationError('HamQTH')
-        with open('keys/hamqth-login.txt', 'r') as f:
-            lines = f.readlines()
-            if len(lines) != 2:
-                raise olerror.LookupVerificationError('HamQTH')
-            else:
-                self.username = lines[0].strip()
-                self.password = lines[1].strip()
-        if os.path.exists('keys/hamqth-key.txt'):
-            with open('keys/hamqth-key.txt', 'r') as f:
+        # look for an existing key
+        print('looking for a key')
+        if os.path.exists(key_file):
+            print('  key exists')
+            with open(key_file, 'r') as f:
                 lines = f.readlines()
                 if len(lines) != 1:
                     self.get_key()
@@ -52,17 +51,8 @@ class HamQTHLookup:
                     self.key = lines[0].strip()
                     self.active = True
         else:
+            print('  key does not exist')
             self.get_key()
-
-    def create_login(self, username, password):
-        """
-        Creates or overwrites a login file
-
-        :param username: HamQTH username (callsign)
-        :param password: HamQTH account password
-        """
-        with open('.onlinelookup-login.txt', 'w') as f:
-            f.write(username + '\n' + password)
 
     def get_key(self):
         """
@@ -73,6 +63,7 @@ class HamQTHLookup:
         raises LookupVerificationError: If login is bad
         """
         # make request
+        print('logging in to a session')
         req = (f'https://www.hamqth.com/xml.php'
                f'?u={self.username}'
                f'&p={self.password}')
@@ -87,7 +78,7 @@ class HamQTHLookup:
             self.key = root[0][0].text
 
             # write to a file
-            with open('keys/hamqth-key.txt', 'w') as f:
+            with open(key_file, 'w') as f:
                 f.write(self.key)
                 f.close()
 
@@ -148,6 +139,8 @@ class HamQTHLookup:
 
         # callsign found
         elif root[0].tag == self.prefix + "search":
+            lr.source = 'HamQTH'
+
             for t in root[0]:
                 key = t.tag[len(self.prefix):]
                 value = t.text

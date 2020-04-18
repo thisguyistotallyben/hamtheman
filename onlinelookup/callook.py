@@ -43,7 +43,6 @@ class CallookLookup:
 
         # setup
         lr = olresult.LookupResult()
-        retdict = {}
 
         # make request
         req = (f'https://callook.info/{call}/json')
@@ -56,6 +55,8 @@ class CallookLookup:
             raise olerror.LookupResultError('Callook')
 
         # ## GET THE GOODS ## #
+
+        lr.source = 'Callook'
 
         # basic info
         lr.callsign = data['current']['callsign']
