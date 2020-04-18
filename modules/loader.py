@@ -40,8 +40,9 @@ class LoaderCog(commands.Cog):
         try:
             self.bot.reload_extension(self.get_module_path(module))
             await ctx.message.add_reaction(success_emoji)
-        except:
+        except Exception as e:
             await ctx.message.add_reaction(fail_emoji)
+            print(e)
 
 
     def get_module_path(self, module):

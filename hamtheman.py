@@ -15,7 +15,12 @@ import discord
 from discord.ext import commands
 
 
-cogs = ['modules.state', 'modules.utils.embed', 'modules.morse', 'modules.loader']
+cogs = ['modules.state',
+        'modules.utils.embed',
+        'modules.morse',
+        'modules.loader',
+        'modules.misc',
+        'modules.reactions']
 
 
 class HamTheManBot(commands.Bot):
@@ -32,12 +37,15 @@ with open('config.json', 'r') as f:
     config = json.load(f)
     print('config loaded')
 
-bot = HamTheManBot(command_prefix=commands.when_mentioned_or('htm '))
+bot = HamTheManBot(command_prefix=commands.when_mentioned_or('!'))
+
+bot.remove_command('help')
 bot.owner_id = config['owner id']
 
 for cog in cogs:
     bot.load_extension(cog)
 
+bot.get_cog('StateCog').set_config(config)
 bot.run(config['discord key'])
 
 
