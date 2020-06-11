@@ -46,7 +46,8 @@ with open('config.json', 'r') as f:
     config['accent color'] = int(config['accent color'], 16)
     print('  config loaded.')
 
-bot = HamTheManBot(command_prefix=commands.when_mentioned_or('htm '))
+# this is a bit of a yikes, but it's an okay patch until I find out to actually do this
+bot = HamTheManBot(command_prefix=['htm ', 'Htm ', 'hTm ', 'htM ', 'HTm ', 'hTM ', 'HTM '], case_insensitive=True)
 
 # discord-y things
 bot.remove_command('help')
