@@ -7,8 +7,6 @@ ONE SMALL LITTLE BIT OF SETUP: PLEASE READ
 Copy the file 'config_default.json' and name it 'config.json'.
 
 Then, fill out the information inside of it with the appropriate data.
-
-TODO: Put the config in the bot itself instead of weirdly passing it around in the state cog
 '''
 
 import time
