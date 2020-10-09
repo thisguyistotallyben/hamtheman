@@ -57,7 +57,7 @@ class MiscCog(commands.Cog):
             .generate(
                 title="Help",
                 description=htm_about + self.calc_uptime(),
-                footer="HamTheMan Version 3.0"
+                footer="HamTheMan Version 3.1"
             )
         )
 
