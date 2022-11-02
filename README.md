@@ -1,20 +1,35 @@
 # HamTheMan
 HamTheMan (htm) is a Discord bot for various ham radio related things, including callsign lookups (globally with HamQTH), solar conditions, time, and a morse code translator.
 
-# Getting started
-Make sure you are running Python 3.6 or higher.
+## Prerequisites
 
-### Discord
-You need discord.py: `pip3 install discord.py` or `pip3 install -U discord.py`
+### System
+- Python: Python 3.10 or higher
+- Discord: `pip3 install discord.py` OR `pip3 install -U discord.py` OR `python3 -m "pip" install discord.py`
+- Requests: `pip3 install requests`
 
 ### API Keys
-You then need an API key for your bot (https://discordapp.com/developers/applications/) and an account with HamQTH (https://hamqth.com).
 
-### Setup
-Setup is pretty simple. You need to copy/rename the file `config_default.json` to `config.json` and fill in the information inside.
+#### Discord Application
+- Go to https://discordapp.com/developers/applications/
+- Create a new application
+- Note the client secret. You will need it later :)
 
-See the API keys section above for the fields `discord key` and `hamqth`.
+#### HamQTH
+- Go to https://hamqth.com
+- Create an account
 
-The accent color is the hex code of the color that highlights embeds.
+## Setup
 
-The `owner id` field is for you. Find your Discord user id (a long number, not your username#0000) and put it here.
+- Copy and rename `config_default.json` to `config.json` and fill in the information inside
+  - `discord key`: the client secret for your Discord bot
+  - `owner id`: Your Discord ID (a long number you can find by right-clicking your name in a server and selecting the option "Copy ID")
+  - `accent color`: The hex code (as a string) used for the embed accents. You can leave this alone for blue.
+  - `hamqth`
+    - `username` Your callsign
+    - `password` Your HamQTH password
+  - `oofs`: No need to touch this.
+
+## Running HamTheMan
+- Run `python3 hamtheman.py &` in a terminal (cmd, powershell, bash, whatever your OS has)
+- **Note:** The `&` runs it in the background so you can close the terminal.

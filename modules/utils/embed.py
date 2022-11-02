@@ -25,5 +25,5 @@ class EmbedCog(commands.Cog):
         ).set_footer(text=footer)
 
 
-def setup(bot):
-    bot.add_cog(EmbedCog(bot))
+async def setup(bot):
+    await bot.add_cog(EmbedCog(bot))

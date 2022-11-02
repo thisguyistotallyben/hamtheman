@@ -23,8 +23,8 @@ class MorseCog(commands.Cog):
         await ctx.send(embed=self.embed_Service.generate(description=morse_text))
 
 
-def setup(bot):
-        bot.add_cog(MorseCog(bot))
+async def setup(bot):
+        await bot.add_cog(MorseCog(bot))
 
 
 # '''

@@ -149,5 +149,5 @@ class LookupCog(commands.Cog):
 
         return rets
 
-def setup(bot):
-    bot.add_cog(LookupCog(bot))
+async def setup(bot):
+    await bot.add_cog(LookupCog(bot))

@@ -46,5 +46,5 @@ class LoaderCog(commands.Cog):
         return f'modules.{module}'
 
 
-def setup(bot):
-    bot.add_cog(LoaderCog(bot))
+async def setup(bot):
+    await bot.add_cog(LoaderCog(bot))

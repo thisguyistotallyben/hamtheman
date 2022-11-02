@@ -95,8 +95,8 @@ class MiscCog(commands.Cog):
         return rets
 
 
-def setup(bot):
-    bot.add_cog(MiscCog(bot))
+async def setup(bot):
+    await bot.add_cog(MiscCog(bot))
 
 
 '''

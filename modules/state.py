@@ -38,5 +38,5 @@ class StateCog(commands.Cog):
             await ctx.message.add_reaction(fail_emoji)
 
 
-def setup(bot):
-    bot.add_cog(StateCog(bot))
+async def setup(bot):
+    await bot.add_cog(StateCog(bot))

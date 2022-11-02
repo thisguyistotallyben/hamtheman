@@ -38,5 +38,5 @@ class ReactionsCog(commands.Cog):
             str(self.bot.config['oofs']))
 
 
-def setup(bot):
-    bot.add_cog(ReactionsCog(bot))
+async def setup(bot):
+    await bot.add_cog(ReactionsCog(bot))
