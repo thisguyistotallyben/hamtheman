@@ -23,32 +23,30 @@ class LookupCog(commands.Cog):
 
     @commands.command()
     async def cond(self, ctx):
-        await ctx.trigger_typing()
+        async with ctx.typing():
+            # remove possibly conficting old file
+            if os.path.isfile("conditions.gif"):
+                os.remove("conditions.gif")
 
-        # remove possibly conficting old file
-        if os.path.isfile("conditions.gif"):
-            os.remove("conditions.gif")
-
-        # download the latest conditions
-        r = requests.get('https://www.hamqsl.com/solar101pic.php')
-        open('conditions.gif', 'wb').write(r.content)
+            # download the latest conditions
+            r = requests.get('https://www.hamqsl.com/solar101pic.php')
+            open('conditions.gif', 'wb').write(r.content)
 
         with open('conditions.gif', 'rb') as f:
             await ctx.send(file=discord.File(f, 'conditions.gif'))
 
     @commands.command()
     async def call(self, ctx, callsign: str):
-        await ctx.trigger_typing()
-
-        result = self.lookup(callsign)
-        result_embed_desc = ''
-        if result == None:
-            await ctx.send('oof no callsign found')
-            return
-        elif result.source == 'Callook':
-            result_embed_desc += self.format_for_callook(result)
-        elif result.source == 'HamQTH':
-            result_embed_desc += self.format_for_hamqth(result)
+        async with ctx.typing():
+            result = self.lookup(callsign)
+            result_embed_desc = ''
+            if result == None:
+                await ctx.send('oof no callsign found')
+                return
+            elif result.source == 'Callook':
+                result_embed_desc += self.format_for_callook(result)
+            elif result.source == 'HamQTH':
+                result_embed_desc += self.format_for_hamqth(result)
 
         await ctx.send(embed=self.embed
             .generate(
