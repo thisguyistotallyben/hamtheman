@@ -112,6 +112,7 @@ help_message = ('**Core commands**\n'
                 ', callook.info)\n'
                 '\t**morse [message]:** Translates a message into morse code '
                 '(use quotes)\n'
+                '\t**iss [grid square]:** Shows ISS pass info. Takes several seconds.\n'
                 '\n**#someta**\n'
                 '\t**about:** About the bot\n'
                 '\t**uptime:** Bot uptime\n'
@@ -121,7 +122,6 @@ help_message = ('**Core commands**\n'
                 '\t**oofs:** Counts all oofs in all servers since last '
                 'reboot\n'
                 '\n**This bot is also responsible for the oofs and bonks**')
-
 
 htm_about = ('**Author**\n'
              '\tBen Johnson, AB3NJ\n'

@@ -26,7 +26,8 @@ class HamTheManBot(commands.Bot):
         'modules.lookup',
         'modules.misc',
         'modules.morse',
-        'modules.reactions']
+        'modules.reactions',
+        'modules.iss']
     
     config = {}
     start_time = time.time()

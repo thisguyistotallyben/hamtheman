@@ -7,6 +7,7 @@ HamTheMan (htm) is a Discord bot for various ham radio related things, including
 - Python: Python 3.10 or higher
 - Discord: `pip3 install discord.py` OR `pip3 install -U discord.py` OR `python3 -m "pip" install discord.py`
 - Requests: `pip3 install requests`
+- ISS pass info: `pip3 install pytz maidenhead TimezoneFinder`
 
 ### API Keys
 
@@ -28,6 +29,7 @@ HamTheMan (htm) is a Discord bot for various ham radio related things, including
   - `hamqth`
     - `username` Your callsign
     - `password` Your HamQTH password
+  - `n2yo` Your API key from N2YO.com
   - `oofs`: No need to touch this.
 
 ## Running HamTheMan
